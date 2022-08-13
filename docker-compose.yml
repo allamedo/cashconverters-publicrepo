@@ -1,0 +1,14 @@
+version: '3.7'
+ #docker stack deploy -c docker-compose.yml cashconverters --with-registry-auth
+
+services:
+    python:
+        image: punder/priv-repo:cashconverters
+        command: python -u parser.py
+        environment:
+            - DB_HOST=punder.mywire.org
+            - DB_PORT=3545 
+        logging:
+            driver: "gcplogs"
+            options:
+                gcp-project: "arctic-sound-262110"

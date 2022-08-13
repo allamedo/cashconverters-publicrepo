@@ -1,0 +1,31 @@
+version: '3.7'
+ #docker stack deploy -c docker-compose-dev.yml cashconverters-dev --with-registry-auth
+
+services:
+    python:
+        image: punder/priv-repo:cashconverters
+        build:
+            context: .
+        command: tail -F anything #python -u -m ptvsd --host 0.0.0.0 --port 5678 --wait browser.py
+        environment:
+            - DB_HOST=192.168.0.15
+            - DB_PORT=3306
+        volumes:
+            - ./:/app
+        ports:
+            - 5678:5678
+        deploy:
+            placement:
+                constraints:
+                    - "node.hostname==docker3-ubuntu"
+
+    browser:
+        image: selenium/standalone-chrome-debug:3.141.59-20200326
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - 5920:5900
+        deploy:
+            placement:
+                constraints:
+                    - "node.hostname==docker3-ubuntu"

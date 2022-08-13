@@ -1,0 +1,9 @@
+mysqlclient
+pushbullet.py
+beautifulsoup4
+html5lib
+selenium
+fake_useragent
+ptvsd
+numpy
+telethon

@@ -1,0 +1,29 @@
+import os
+
+db = dict(
+    host = os.environ['DB_HOST'],
+    user = "punder_oferton",
+    passw = "1a2b3c",
+    db_ = "punder_refurb",
+    port = int(os.environ['DB_PORT'])
+)
+
+pushover = dict(
+    pushbullet_key = PUSHBULLET_KEY,
+    token = TOKEN,
+    user = USER,
+    token_alert = TOKEN_ALERT,
+    user_alert = USER_ALERT
+)
+
+browser = dict(
+    driver_location_lnx = "/usr/lib/chromium-browser/chromedriver"
+)
+
+
+telegram = dict(
+    id = ID,
+    hash = HASH,
+    bot_token = BOT_TOKEN,
+    chat_id = ID
+)
